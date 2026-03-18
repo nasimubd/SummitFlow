@@ -159,13 +159,7 @@ const EventChatWidget = ({ eventContext }: { eventContext: EventContext }) => {
                     ].map((q) => (
                       <button
                         key={q}
-                        onClick={() => {
-                          setInput(q);
-                          setTimeout(() => {
-                            setInput(q);
-                            send();
-                          }, 0);
-                        }}
+                        onClick={() => send(q)}
                         className="text-[11px] px-2.5 py-1 rounded-lg bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
                       >
                         {q}
