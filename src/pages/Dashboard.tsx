@@ -4,6 +4,7 @@ import { Plus, Trash2, Edit2, Users } from "lucide-react";
 import AIDescriptionGenerator from "@/components/AIDescriptionGenerator";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import usePageMeta from "@/hooks/usePageMeta";
 import { useAuth } from "@/contexts/AuthContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
