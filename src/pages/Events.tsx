@@ -5,6 +5,9 @@ import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EventCard from "@/components/EventCard";
+import EventCardSkeleton from "@/components/EventCardSkeleton";
+import EmptyEvents from "@/components/EmptyEvents";
+import usePageMeta from "@/hooks/usePageMeta";
 
 const categories = ["All", "Conference", "Workshop", "Networking", "Concert"];
 
