@@ -46,8 +46,8 @@ const EventChatWidget = ({ eventContext }: { eventContext: EventContext }) => {
     }
   }, [messages, loading]);
 
-  const send = async () => {
-    const text = input.trim();
+  const send = async (overrideText?: string) => {
+    const text = (overrideText ?? input).trim();
     if (!text || loading) return;
 
     const userMsg: Message = { role: "user", content: text };
