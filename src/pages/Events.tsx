@@ -12,6 +12,7 @@ import usePageMeta from "@/hooks/usePageMeta";
 const categories = ["All", "Conference", "Workshop", "Networking", "Concert"];
 
 const EventsPage = () => {
+  usePageMeta("Browse Events", "Discover conferences, workshops, networking events, and concerts. Find your next experience with EventFlow AI.");
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
 
