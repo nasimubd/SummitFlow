@@ -4,10 +4,12 @@ import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
+import usePageMeta from "@/hooks/usePageMeta";
 import Footer from "@/components/Footer";
 
 const Login = () => {
   const navigate = useNavigate();
+  usePageMeta("Sign In", "Sign in to EventFlow AI to manage and organize events.");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
