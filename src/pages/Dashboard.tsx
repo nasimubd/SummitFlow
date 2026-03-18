@@ -90,7 +90,7 @@ const Dashboard = () => {
       } else {
         const { error } = await supabase
           .from("events")
-          .insert({ ...form, date: new Date(form.date).toISOString() });
+          .insert({ ...form, date: new Date(form.date).toISOString(), user_id: user!.id });
         if (error) throw error;
       }
     },
