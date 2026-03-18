@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Plus, Trash2, Edit2, Users } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { useAuth } from "@/contexts/AuthContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -32,6 +33,7 @@ const categories = ["Conference", "Workshop", "Networking", "Concert"];
 
 const Dashboard = () => {
   const queryClient = useQueryClient();
+  const { user } = useAuth();
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<EventForm>(emptyForm);
@@ -46,6 +48,7 @@ const Dashboard = () => {
       const { data, error } = await supabase
         .from("events")
         .select("*")
+        .eq("user_id", user!.id)
         .order("created_at", { ascending: false });
       if (error) throw error;
       return data;
@@ -87,7 +90,7 @@ const Dashboard = () => {
       } else {
         const { error } = await supabase
           .from("events")
-          .insert({ ...form, date: new Date(form.date).toISOString() });
+          .insert({ ...form, date: new Date(form.date).toISOString(), user_id: user!.id });
         if (error) throw error;
       }
     },
