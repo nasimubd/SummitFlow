@@ -2,6 +2,9 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import EventCard from "./EventCard";
+import conferenceImg from "@/assets/event-conference.jpg";
+import workshopImg from "@/assets/event-workshop.jpg";
+import networkingImg from "@/assets/event-networking.jpg";
 
 const events = [
   {
