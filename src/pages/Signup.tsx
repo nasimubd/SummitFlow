@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
+import usePageMeta from "@/hooks/usePageMeta";
 import Footer from "@/components/Footer";
 
 const Signup = () => {
