@@ -62,7 +62,7 @@ const FeaturedEvents = () => {
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="surface-card h-80 animate-pulse rounded-2xl" />
+            <EventCardSkeleton key={i} />
           ))}
         </div>
       ) : events && events.length > 0 ? (
