@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Register = () => {
+  usePageMeta("Register", "Register for an event on EventFlow AI.");
   const { id } = useParams<{ id: string }>();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
