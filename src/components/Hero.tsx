@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const ease = [0.4, 0, 0.2, 1];
+const ease: [number, number, number, number] = [0.4, 0, 0.2, 1];
 
 const Hero = () => (
   <section className="relative pt-24 pb-20 overflow-hidden">
