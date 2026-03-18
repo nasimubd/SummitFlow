@@ -206,7 +206,7 @@ const EventChatWidget = ({ eventContext }: { eventContext: EventContext }) => {
                 className="flex-1 h-9 px-3 bg-secondary rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
               />
               <button
-                onClick={send}
+                onClick={() => send()}
                 disabled={!input.trim() || loading}
                 className="w-9 h-9 btn-primary rounded-lg flex items-center justify-center shrink-0 transition-all hover:brightness-110 active:scale-95 disabled:opacity-40"
               >
