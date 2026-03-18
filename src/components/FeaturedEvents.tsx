@@ -32,6 +32,7 @@ const events = [
     date: "Dec 05, 2026",
     location: "London, UK",
     attendees: "180",
+    imageUrl: networkingImg,
   },
 ];
 
