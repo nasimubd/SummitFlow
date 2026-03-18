@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import EventCard from "./EventCard";
+import EventCardSkeleton from "./EventCardSkeleton";
 
 const FeaturedEvents = () => {
   const { data: events, isLoading } = useQuery({
