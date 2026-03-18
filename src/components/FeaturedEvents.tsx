@@ -23,6 +23,7 @@ const events = [
     date: "Nov 12, 2026",
     location: "Remote",
     attendees: "450",
+    imageUrl: workshopImg,
   },
   {
     id: "3",
