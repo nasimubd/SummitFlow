@@ -4,6 +4,7 @@ import { Calendar, MapPin, Users, ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import EventChatWidget from "@/components/EventChatWidget";
 
 const EventDetail = () => {
   const { id } = useParams<{ id: string }>();
