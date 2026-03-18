@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import EventCard from "./EventCard";
+import EventCardSkeleton from "./EventCardSkeleton";
 
 const FeaturedEvents = () => {
   const { data: events, isLoading } = useQuery({
@@ -61,7 +62,7 @@ const FeaturedEvents = () => {
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="surface-card h-80 animate-pulse rounded-2xl" />
+            <EventCardSkeleton key={i} />
           ))}
         </div>
       ) : events && events.length > 0 ? (
