@@ -9,6 +9,7 @@ import EventChatWidget from "@/components/EventChatWidget";
 
 const EventDetail = () => {
   const { id } = useParams<{ id: string }>();
+  usePageMeta("Event Details", "View event details, ticket options, and register on EventFlow AI.");
 
   const { data: event, isLoading: eventLoading } = useQuery({
     queryKey: ["event", id],
