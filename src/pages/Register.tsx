@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useParams, useSearchParams, useNavigate, Link } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { ArrowLeft, CheckCircle } from "lucide-react";
+import { ArrowLeft, CheckCircle, Calendar, MapPin, Ticket } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import usePageMeta from "@/hooks/usePageMeta";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
