@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Sparkles, Menu, X } from "lucide-react";
+import { Sparkles, Menu, X, LogOut } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const navLinks = [
   { label: "Browse Events", href: "/events" },
   { label: "Organize", href: "/dashboard" },
-  { label: "Pricing", href: "#pricing" },
 ];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { user, signOut } = useAuth();
 
   return (
     <nav className="sticky top-0 z-50 w-full surface-nav">
@@ -23,7 +24,6 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
           {navLinks.map((link) => (
             <Link
@@ -37,15 +37,36 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-4">
-          <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200">
-            Sign In
-          </button>
-          <button className="h-10 px-5 btn-primary text-sm rounded-lg transition-all duration-200 active:scale-95 hover:brightness-110">
-            Get Started
-          </button>
+          {user ? (
+            <>
+              <span className="text-sm text-muted-foreground truncate max-w-[150px]">
+                {user.email}
+              </span>
+              <button
+                onClick={signOut}
+                className="h-10 px-4 btn-secondary rounded-lg text-sm flex items-center gap-2 transition-all hover:bg-secondary/80"
+              >
+                <LogOut className="w-4 h-4" /> Sign Out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+              >
+                Sign In
+              </Link>
+              <Link
+                to="/signup"
+                className="h-10 px-5 btn-primary text-sm rounded-lg transition-all duration-200 active:scale-95 hover:brightness-110 flex items-center"
+              >
+                Get Started
+              </Link>
+            </>
+          )}
         </div>
 
-        {/* Mobile toggle */}
         <button
           className="md:hidden text-foreground"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -54,7 +75,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden px-6 pb-6 space-y-4 bg-background border-t border-secondary">
           {navLinks.map((link) => (
@@ -68,12 +88,23 @@ const Navbar = () => {
             </Link>
           ))}
           <div className="pt-2 flex flex-col gap-3">
-            <button className="text-sm font-medium text-muted-foreground hover:text-foreground">
-              Sign In
-            </button>
-            <button className="h-10 btn-primary text-sm rounded-lg active:scale-95">
-              Get Started
-            </button>
+            {user ? (
+              <button
+                onClick={() => { signOut(); setMobileOpen(false); }}
+                className="h-10 btn-secondary rounded-lg text-sm flex items-center justify-center gap-2"
+              >
+                <LogOut className="w-4 h-4" /> Sign Out
+              </button>
+            ) : (
+              <>
+                <Link to="/login" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-muted-foreground hover:text-foreground text-center">
+                  Sign In
+                </Link>
+                <Link to="/signup" onClick={() => setMobileOpen(false)} className="h-10 btn-primary text-sm rounded-lg flex items-center justify-center">
+                  Get Started
+                </Link>
+              </>
+            )}
           </div>
         </div>
       )}
