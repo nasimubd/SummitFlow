@@ -14,6 +14,7 @@ const events = [
     date: "Oct 24, 2026",
     location: "San Francisco, CA",
     attendees: "1,240",
+    imageUrl: conferenceImg,
   },
   {
     id: "2",
