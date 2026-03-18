@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Calendar, MapPin, Users, ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import usePageMeta from "@/hooks/usePageMeta";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EventChatWidget from "@/components/EventChatWidget";
