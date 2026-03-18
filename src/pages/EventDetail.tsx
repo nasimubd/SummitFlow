@@ -4,6 +4,7 @@ import { Calendar, MapPin, Users, ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import EventChatWidget from "@/components/EventChatWidget";
 
 const EventDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -175,6 +176,33 @@ const EventDetail = () => {
         </p>
       </main>
       <Footer />
+
+      {/* AI Chat Widget */}
+      {event && ticketTypes && (
+        <EventChatWidget
+          eventContext={{
+            title: event.title,
+            date: new Date(event.date).toLocaleString("en-US", {
+              weekday: "long",
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+              hour: "numeric",
+              minute: "2-digit",
+            }),
+            location: event.location,
+            category: event.category,
+            description: event.description,
+            organiser: event.organiser_name,
+            maxCapacity: event.max_capacity,
+            tickets: ticketTypes.map((t) => ({
+              name: t.name,
+              price: Number(t.price),
+              available: t.quantity_available,
+            })),
+          }}
+        />
+      )}
     </div>
   );
 };
