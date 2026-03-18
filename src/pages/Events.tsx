@@ -5,10 +5,14 @@ import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EventCard from "@/components/EventCard";
+import EventCardSkeleton from "@/components/EventCardSkeleton";
+import EmptyEvents from "@/components/EmptyEvents";
+import usePageMeta from "@/hooks/usePageMeta";
 
 const categories = ["All", "Conference", "Workshop", "Networking", "Concert"];
 
 const EventsPage = () => {
+  usePageMeta("Browse Events", "Discover conferences, workshops, networking events, and concerts. Find your next experience with EventFlow AI.");
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
 
@@ -76,11 +80,8 @@ const EventsPage = () => {
         {/* Grid */}
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="surface-card h-80 animate-pulse rounded-2xl"
-              />
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <EventCardSkeleton key={i} />
             ))}
           </div>
         ) : filtered && filtered.length > 0 ? (
@@ -103,11 +104,7 @@ const EventsPage = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center py-20">
-            <p className="text-muted-foreground text-lg">
-              No events found. Try a different search or category.
-            </p>
-          </div>
+          <EmptyEvents />
         )}
       </main>
       <Footer />

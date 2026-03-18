@@ -2,12 +2,14 @@ import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Calendar, MapPin, Users, ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import usePageMeta from "@/hooks/usePageMeta";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EventChatWidget from "@/components/EventChatWidget";
 
 const EventDetail = () => {
   const { id } = useParams<{ id: string }>();
+  usePageMeta("Event Details", "View event details, ticket options, and register on EventFlow AI.");
 
   const { data: event, isLoading: eventLoading } = useQuery({
     queryKey: ["event", id],

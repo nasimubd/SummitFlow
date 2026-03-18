@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useParams, useSearchParams, useNavigate, Link } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { ArrowLeft, CheckCircle } from "lucide-react";
+import { ArrowLeft, CheckCircle, Calendar, MapPin, Ticket } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import usePageMeta from "@/hooks/usePageMeta";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Register = () => {
+  usePageMeta("Register", "Register for an event on EventFlow AI.");
   const { id } = useParams<{ id: string }>();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -73,21 +75,64 @@ const Register = () => {
   };
 
   if (success) {
+    const selectedTicket = ticketTypes?.find((t) => t.id === ticketId);
     return (
       <div className="min-h-screen bg-background text-foreground">
         <Navbar />
-        <div className="max-w-lg mx-auto px-6 py-20 text-center">
-          <CheckCircle className="w-16 h-16 text-primary mx-auto mb-6" />
-          <h1 className="text-2xl font-bold mb-2">You're registered!</h1>
-          <p className="text-muted-foreground mb-8">
-            Check your email for confirmation details.
-          </p>
-          <Link
-            to={`/events/${id}`}
-            className="h-10 px-6 btn-primary rounded-lg inline-flex items-center transition-all hover:brightness-110"
-          >
-            Back to Event
-          </Link>
+        <div className="max-w-md mx-auto px-6 py-20">
+          <div className="surface-card p-8 text-center">
+            <CheckCircle className="w-14 h-14 text-primary mx-auto mb-5" />
+            <h1 className="text-2xl font-bold mb-1">You're registered!</h1>
+            <p className="text-muted-foreground text-sm mb-6">
+              Check your email for confirmation details.
+            </p>
+
+            <div className="text-left space-y-3 py-5 border-y border-[rgba(255,255,255,0.05)]">
+              <div className="flex items-start gap-3">
+                <Calendar className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-xs text-muted-foreground">Event</p>
+                  <p className="text-sm font-medium">{event?.title}</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-xs text-muted-foreground">Attendee</p>
+                  <p className="text-sm font-medium">{name}</p>
+                </div>
+              </div>
+              {selectedTicket && (
+                <div className="flex items-start gap-3">
+                  <Ticket className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+                  <div>
+                    <p className="text-xs text-muted-foreground">Ticket</p>
+                    <p className="text-sm font-medium">
+                      {selectedTicket.name} —{" "}
+                      {selectedTicket.price === 0
+                        ? "Free"
+                        : `$${Number(selectedTicket.price).toFixed(2)}`}
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="flex flex-col gap-3 mt-6">
+              <Link
+                to={`/events/${id}`}
+                className="h-10 btn-primary rounded-lg flex items-center justify-center text-sm transition-all hover:brightness-110"
+              >
+                Back to Event
+              </Link>
+              <Link
+                to="/events"
+                className="h-10 btn-secondary rounded-lg flex items-center justify-center text-sm transition-all hover:bg-secondary/80"
+              >
+                Browse More Events
+              </Link>
+            </div>
+          </div>
         </div>
         <Footer />
       </div>

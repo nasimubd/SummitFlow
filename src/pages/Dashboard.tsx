@@ -4,6 +4,7 @@ import { Plus, Trash2, Edit2, Users } from "lucide-react";
 import AIDescriptionGenerator from "@/components/AIDescriptionGenerator";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import usePageMeta from "@/hooks/usePageMeta";
 import { useAuth } from "@/contexts/AuthContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -35,6 +36,7 @@ const categories = ["Conference", "Workshop", "Networking", "Concert"];
 const Dashboard = () => {
   const queryClient = useQueryClient();
   const { user } = useAuth();
+  usePageMeta("Dashboard", "Manage your events, view registrations, and create new events on EventFlow AI.");
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<EventForm>(emptyForm);
