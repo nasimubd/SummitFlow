@@ -33,6 +33,7 @@ const categories = ["Conference", "Workshop", "Networking", "Concert"];
 
 const Dashboard = () => {
   const queryClient = useQueryClient();
+  const { user } = useAuth();
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<EventForm>(emptyForm);
