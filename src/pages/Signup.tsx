@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 
 const Signup = () => {
   const navigate = useNavigate();
+  usePageMeta("Create Account", "Sign up for EventFlow AI to start organizing events with AI-powered tools.");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
