@@ -238,13 +238,21 @@ const Dashboard = () => {
                 onChange={(e) => setForm({ ...form, cover_image_url: e.target.value })}
                 className="sm:col-span-2 h-11 px-4 bg-secondary rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
               />
-              <textarea
-                placeholder="Description"
-                rows={3}
-                value={form.description}
-                onChange={(e) => setForm({ ...form, description: e.target.value })}
-                className="sm:col-span-2 px-4 py-3 bg-secondary rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+              <AIDescriptionGenerator
+                onGenerated={(desc) => setForm({ ...form, description: desc })}
               />
+              <div className="sm:col-span-2 space-y-1">
+                <textarea
+                  placeholder="Description"
+                  rows={5}
+                  value={form.description}
+                  onChange={(e) => setForm({ ...form, description: e.target.value })}
+                  className="w-full px-4 py-3 bg-secondary rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+                />
+                <p className="text-xs text-muted-foreground text-right tabular-nums">
+                  {form.description.length} characters
+                </p>
+              </div>
               <div className="sm:col-span-2 flex gap-3">
                 <button
                   type="submit"
