@@ -4,7 +4,7 @@
 [![React](https://img.shields.io/badge/React-18-61DAFB.svg?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF.svg?logo=vite&logoColor=white)](https://vite.dev)
-[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?logo=git&logoColor=white)](https://github.com/nasimubd/SummitFlow/releases)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?logo=git&logoColor=white)](https://github.com/nasimubd/SummitFlow/releases)
 [![Conventional Commits](https://img.shields.io/badge/commits-conventional-fe5196.svg)](https://www.conventionalcommits.org/)
 
 **Open-source event operations platform for organisers, communities, conferences, workshops, and ticketed gatherings.**
@@ -152,7 +152,7 @@ supabase/
 
 ## Project status
 
-**SummitFlow v0.1.0** is the initial open-source baseline. It includes event discovery, ticket registration, organiser workflows, authentication, and event-assistance features. Review and configure authentication, database policies, environment variables, and server-side functions before any production deployment.
+**SummitFlow v1.0.0** is the initial open-source baseline. It includes event discovery, ticket registration, organiser workflows, authentication, and event-assistance features. Review and configure authentication, database policies, environment variables, and server-side functions before any production deployment.
 
 ## Contributing
 
