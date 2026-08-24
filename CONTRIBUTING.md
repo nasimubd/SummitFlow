@@ -63,3 +63,16 @@ Do not merge a pull request whose title does not follow this doctrine. Use `fix(
 3. Run relevant tests and build checks.
 4. Open a pull request using the required title format and template.
 5. Address review feedback with additional conventional commits.
+
+## Local validation
+
+Before opening a pull request, install dependencies and run the checks relevant to your change:
+
+```bash
+npm install
+npm run lint
+npm run test
+npm run build
+```
+
+If a change needs Supabase configuration, document the required migrations, row-level security changes, and function deployment steps in the pull request.
